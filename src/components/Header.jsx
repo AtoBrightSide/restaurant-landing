@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import RestaurantLogo from "../assets/logo.jpg";
+import { Button } from "./ui/Button";
+import { CartContext } from "../store/CartContext";
 
 export const Header = () => {
+  const { cartItems } = useContext(CartContext);
+  console.log(cartItems);
   return (
     <header id="main-header">
       <div id="title">
@@ -8,7 +13,7 @@ export const Header = () => {
         <h1>Something Cafe</h1>
       </div>
       <nav>
-        <button>Cart(0)</button>
+        <Button textOnly>Cart({cartItems.size})</Button>
       </nav>
     </header>
   );

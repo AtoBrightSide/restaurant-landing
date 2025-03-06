@@ -21,10 +21,11 @@ export const Meals = () => {
       console.error(error);
     }
   }, []);
+  
   return (
     <ul id="meals">
       {meals.map((meal, _) => (
-        <MealItem {...meal} />
+        <MealItem key={meal.id} {...meal} />
       ))}
     </ul>
   );
