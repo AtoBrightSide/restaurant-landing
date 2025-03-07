@@ -4,18 +4,10 @@ import { Button } from "./ui/Button";
 import { CartContext } from "../store/CartContext";
 
 export const MealItem = (meal) => {
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const { cartItems, addItem } = useContext(CartContext);
   const { id, name, image, description, price } = meal;
-
   const handleCartAction = () => {
-    setCartItems((prevItems) => {
-      if (prevItems.has(meal)) {
-        let newCartItems = new Set([...prevItems]);
-        newCartItems.delete(meal);
-        return newCartItems;
-      }
-      return new Set([...prevItems, meal]);
-    });
+    addItem(meal);
   };
 
   return (
@@ -29,7 +21,7 @@ export const MealItem = (meal) => {
         </div>
         <p className="meal-item-actions">
           <Button onClick={handleCartAction}>
-            {cartItems.has(meal) ? "Remove from cart" : "Add to cart"}
+            Add to cart
           </Button>
         </p>
       </article>
