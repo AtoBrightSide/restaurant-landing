@@ -4,6 +4,7 @@ export const CartContext = createContext({
   cartItems: [],
   addItem: (item) => {},
   removeItem: (id) => {},
+  clearCart: () => {},
 });
 
 const CartReducer = (state, action) => {
@@ -46,6 +47,11 @@ const CartReducer = (state, action) => {
         ...state,
         cartItems: state.cartItems.filter((item) => item.id !== action.id),
       };
+    case "CLEAR_CART":
+      return {
+        ...state,
+        cartItems: [],
+      };
     default:
       throw new Error("Wrong Action");
   }
@@ -70,7 +76,18 @@ export const CartContextProvider = ({ children }) => {
     });
   };
 
-  const context = { cartItems: state.cartItems, addItem, removeItem };
+  const clearCart = () => {
+    cartDispatch({
+      type: "CLEAR_CART",
+    });
+  };
+
+  const context = {
+    cartItems: state.cartItems,
+    addItem,
+    removeItem,
+    clearCart,
+  };
   return (
     <CartContext.Provider value={context}>{children}</CartContext.Provider>
   );
