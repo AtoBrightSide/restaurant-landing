@@ -234,6 +234,20 @@ h1 {
   color: #ffab04;
 }
 
+.error {
+  width: auto;
+  max-width: 50%;
+  background-color: #f7a5a0;
+  color: #e70f00;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1rem;
+}
+
 .modal {
   background-color: #e4ddd4;
   border-radius: 6px;
